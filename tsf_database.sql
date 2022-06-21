@@ -1,31 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 05:35 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `tsf_database`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
 
 CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
@@ -35,21 +10,26 @@ CREATE TABLE `customers` (
   `Balance` int(10) NOT NULL DEFAULT 1000
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `money`(
+`user` varchar(9) NOT NULL,
+`amount` int NOT NULL,
+`beneficiary` varchar(20) NOT NULL
+);
 --
 -- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`ID`, `Name`, `Email`, `Phone`, `Balance`) VALUES
-(1, 'M. Verstappen', 'max.verstappen@gmail.com', '9876543210', 7000),
-(2, 'L. Hamilton', 'hamilton_lewis@gmail.com', '9123456780', 4700),
-(3, 'V. Bottas', 'valtteri.bottas@gmail.com', '9181716151', 4500),
-(4, 'K. Raikkonen', 'kimi_r@gmail.com', '8123481234', 8550),
-(5, 'L. Norris', 'lando.4@gmail.com', '9090909090', 4500),
-(6, 'D. Ricciardo', 'danny_ric@gmail.com', '8181818181', 8200),
-(7, 'F. Alonso', 'fernando.alonso@gmail.com', '9009008000', 8100),
-(8, 'E. Ocon', 'ocon_esteban@gmail.com', '9229229229', 8350),
-(9, 'C. Sainz', 'carlos.s@gmail.com', '8585858585', 6500),
-(10, 'Y. Tsunoda', 'tsunoda_yuki@gmail.com', '8000000000', 6500);
+(1, 'Amol J', 'amol@gmail.com', '7878787878', 80000),
+(2, 'Vishal K', 'vishal@gmail.com', '4545544545', 54000),
+(3, 'Kanak P', 'kanak@gmail.com', '9696696969', 75000),
+(4, 'Reshma L', 'reshma@gmail.com', '8181818181', 85500),
+(5, 'Naman P', 'naman@gmail.com', '9090909090', 45000),
+(6, 'Kailash K', 'kailash@gmail.com', '9292929292', 82000),
+(7, 'Palak P', 'palak@gmail.com', '9339939339', 81000),
+(8, 'Isha N', 'isha@gmail.com', '9229229229', 83500),
+(9, 'Aman A', 'aman@gmail.com', '8585858585', 65000),
+(10, 'Sundar M', 'sundar@gmail.com', '8585858585', 65000);
 
 -- --------------------------------------------------------
 
@@ -70,9 +50,12 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`Sno`, `Name1`, `Name2`, `Amount`, `Time`) VALUES
-(1, 'K. Raikkonen', 'L. Norris', 500, '2021-06-10 15:05:01'),
-(2, 'D. Ricciardo', 'L. Norris', 300, '2021-06-10 15:08:00');
+(1, 'Raman R', 'Paras K', 1000, '2022-06-20 15:05:01'),
+INSERT INTO `transactions` (`Sno`, `Name1`, `Name2`, `Amount`, `Time`) VALUES
+(2, 'Ya', 'Paras K', 1000, '2022-06-20 15:05:01'),
 
+DELETE FROM `transactions`
+WHERE Sno=2;
 --
 -- Indexes for dumped tables
 --
@@ -99,7 +82,3 @@ ALTER TABLE `transactions`
 ALTER TABLE `transactions`
   MODIFY `Sno` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
